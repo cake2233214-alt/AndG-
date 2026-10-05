@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>มาง้อนะแองจี้</title>
+<link href="https://fonts.googleapis.com/css2?family=Mali:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff3d6;--ink:#3b2a1a;--soft:#7a6248;--btn:#ff6b4a;--line:#e9d3a3;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2b2116;--ink:#fff1d6;--soft:#d1b98f;--btn:#ff7d5e;--line:#4d3b27}}
+:root[data-theme="dark"]{--bg:#2b2116;--ink:#fff1d6;--soft:#d1b98f;--btn:#ff7d5e;--line:#4d3b27}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Mali","Sarabun",sans-serif;line-height:1.6;text-align:center;overflow-x:hidden}
+main{max-width:460px;margin:0 auto;padding:20px 20px 70px}
+.name{font-size:.85rem;color:var(--soft)}
+.name input{font:inherit;width:11em;padding:6px 12px;border-radius:999px;border:2px solid var(--line);background:transparent;color:var(--ink);text-align:center}
+.name input:focus{outline:3px solid var(--btn)}
+svg{width:min(78vw,300px);height:auto;display:block;margin:10px auto 0}
+.tear{animation:drip 1.6s ease-in infinite}
+.tear.b{animation-delay:.8s}
+@keyframes drip{0%{transform:translateY(0);opacity:1}100%{transform:translateY(34px);opacity:0}}
+h1{font-size:clamp(2rem,9vw,2.8rem);margin:.3em 0 .1em;line-height:1.2}
+p{margin:0 0 1em;color:var(--soft)}
+.ask{min-height:130px;margin-top:26px}
+button{font:inherit;font-weight:700;border:0;border-radius:14px;padding:12px 24px;cursor:pointer}
+button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#yes{background:var(--btn);color:#fff;font-size:1.15rem}
+#no{background:transparent;color:var(--soft);border:2px solid var(--line);margin-left:6px;transition:transform .15s}
+#win{display:none}
+.pop{position:fixed;bottom:-30px;font-size:26px;pointer-events:none;animation:up 3s ease-in forwards}
+@keyframes up{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+@media (prefers-reduced-motion:reduce){.pop{display:none}.tear{animation:none}#no{transition:none}}
+</style>
+</head>
+<body>
+<main>
+<div class="name"><label>ชื่อเธอ: <input id="n" value="แองจี้" placeholder="ใส่ชื่อ" maxlength="24"></label></div>
+
+<div id="main">
+<svg viewBox="0 0 300 300" role="img" aria-label="หมาน้อยร้องไห้ถือป้ายมาง้อ">
+ <ellipse cx="150" cy="288" rx="90" ry="8" fill="#000" opacity=".12"/>
+ <rect x="102" y="190" width="96" height="92" rx="40" fill="#c98a52"/>
+ <ellipse cx="150" cy="238" rx="30" ry="36" fill="#f3d9b1"/>
+ <circle cx="70" cy="86" r="30" fill="#a86d3c"/><circle cx="230" cy="86" r="30" fill="#a86d3c"/>
+ <circle cx="70" cy="86" r="16" fill="#e8b98a"/><circle cx="230" cy="86" r="16" fill="#e8b98a"/>
+ <circle cx="150" cy="130" r="82" fill="#c98a52"/>
+ <ellipse cx="150" cy="158" rx="40" ry="30" fill="#f3d9b1"/>
+ <ellipse cx="150" cy="144" rx="13" ry="9" fill="#3b2a1a"/>
+ <path d="M130 176 Q150 162 170 176" stroke="#3b2a1a" stroke-width="5" fill="none" stroke-linecap="round"/>
+ <circle cx="118" cy="116" r="14" fill="#fff"/><circle cx="182" cy="116" r="14" fill="#fff"/>
+ <circle cx="118" cy="122" r="8" fill="#3b2a1a"/><circle cx="182" cy="122" r="8" fill="#3b2a1a"/>
+ <circle cx="115" cy="119" r="3" fill="#fff"/><circle cx="179" cy="119" r="3" fill="#fff"/>
+ <path d="M98 96 L132 104" stroke="#3b2a1a" stroke-width="5" stroke-linecap="round"/>
+ <path d="M202 96 L168 104" stroke="#3b2a1a" stroke-width="5" stroke-linecap="round"/>
+ <path class="tear" d="M112 138 q-6 12 0 16 q6 -4 0 -16z" fill="#5bb8f0"/>
+ <path class="tear b" d="M188 138 q-6 12 0 16 q6 -4 0 -16z" fill="#5bb8f0"/>
+ <ellipse cx="96" cy="150" rx="12" ry="7" fill="#ff8a8a" opacity=".6"/><ellipse cx="204" cy="150" rx="12" ry="7" fill="#ff8a8a" opacity=".6"/>
+ <rect x="62" y="196" width="176" height="62" rx="8" fill="#fffaf0" stroke="#3b2a1a" stroke-width="4" transform="rotate(-3 150 227)"/>
+ <text x="150" y="238" text-anchor="middle" font-family="Mali,Sarabun,sans-serif" font-size="30" font-weight="700" fill="#3b2a1a" transform="rotate(-3 150 227)">มาง้อนะ</text>
+ <circle cx="76" cy="218" r="14" fill="#c98a52"/><circle cx="224" cy="218" r="14" fill="#c98a52"/>
+</svg>
+<h1>มาง้อนะ <span id="who">แองจี้</span></h1>
+<p>หายโกรธได้ยัง?</p>
+<div class="ask">
+ <button id="yes">หายโกรธแล้ว</button>
+ <button id="no">ยังโกรธอยู่</button>
+</div>
+</div>
+
+<div id="win">
+<svg viewBox="0 0 300 300" role="img" aria-label="หมาน้อยดีใจ">
+ <ellipse cx="150" cy="288" rx="90" ry="8" fill="#000" opacity=".12"/>
+ <rect x="102" y="190" width="96" height="92" rx="40" fill="#c98a52"/>
+ <ellipse cx="150" cy="238" rx="30" ry="36" fill="#f3d9b1"/>
+ <circle cx="70" cy="86" r="30" fill="#a86d3c"/><circle cx="230" cy="86" r="30" fill="#a86d3c"/>
+ <circle cx="150" cy="130" r="82" fill="#c98a52"/>
+ <ellipse cx="150" cy="158" rx="40" ry="30" fill="#f3d9b1"/>
+ <ellipse cx="150" cy="144" rx="13" ry="9" fill="#3b2a1a"/>
+ <path d="M122 162 Q150 196 178 162 Z" fill="#7a2a2a" stroke="#3b2a1a" stroke-width="4" stroke-linejoin="round"/>
+ <path d="M104 120 Q118 104 132 120" stroke="#3b2a1a" stroke-width="6" fill="none" stroke-linecap="round"/>
+ <path d="M168 120 Q182 104 196 120" stroke="#3b2a1a" stroke-width="6" fill="none" stroke-linecap="round"/>
+ <ellipse cx="96" cy="150" rx="12" ry="7" fill="#ff8a8a" opacity=".6"/><ellipse cx="204" cy="150" rx="12" ry="7" fill="#ff8a8a" opacity=".6"/>
+ <path d="M104 200 L60 150" stroke="#c98a52" stroke-width="26" stroke-linecap="round"/>
+ <path d="M196 200 L240 150" stroke="#c98a52" stroke-width="26" stroke-linecap="round"/>
+</svg>
+<h1>เย้! หายโกรธแล้ว <span id="who2">แองจี้</span></h1>
+<p>งั้นไปกินอะไรกัน</p>
+</div>
+</main>
+<script>
+var inp=document.getElementById('n'),a=document.getElementById('who'),b=document.getElementById('who2');
+function setName(v){v=(v||'').trim()||'แองจี้';a.textContent=v;b.textContent=v}
+try{var h=decodeURIComponent(location.hash.slice(1));if(h){inp.value=h;setName(h)}}catch(e){}
+inp.addEventListener('input',function(){setName(inp.value);try{history.replaceState(null,'','#'+encodeURIComponent(inp.value))}catch(e){}});
+var no=document.getElementById('no'),n=0;
+function run(e){if(e&&e.preventDefault)e.preventDefault();n++;
+ no.style.transform='translate('+(Math.random()-.5)*Math.min(260,innerWidth-140)+'px,'+(Math.random()-.5)*110+'px)';
+ if(n>4)no.textContent='ไม่ไหวแล้ว ง้อต่อนะ'}
+no.addEventListener('mouseenter',run);no.addEventListener('touchstart',run,{passive:false});no.addEventListener('click',run);
+document.getElementById('yes').addEventListener('click',function(){
+ document.getElementById('main').style.display='none';
+ document.getElementById('win').style.display='block';scrollTo(0,0);
+ for(var i=0;i<22;i++)(function(i){setTimeout(function(){var s=document.createElement('div');s.className='pop';
+  s.textContent=['⭐','🎉','🍖','✨'][i%4];s.style.left=Math.random()*100+'vw';document.body.appendChild(s);
+  setTimeout(function(){s.remove()},3100)},i*90)})(i)});
+</script>
+</body>
+</html>
